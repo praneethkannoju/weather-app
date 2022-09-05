@@ -1,0 +1,4 @@
+export const Config = {
+  API_URL: "https://api.openweathermap.org",
+  API_KEY: "578a6d9c928a1c3ea928241fd2319003",
+};

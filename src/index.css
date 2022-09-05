@@ -1,0 +1,102 @@
+body {
+  margin: 0;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #eef6fb !important;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.mainDiv {
+  padding-bottom: 10px;
+  border-radius: 3px;
+}
+
+.pointer {
+  cursor: pointer;
+  margin: 25px 30px;
+  font-weight: 700;
+}
+
+.rowHeight {
+  width: 800px;
+  border: 4px solid white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px 10px #3231311a;
+}
+
+.col-12-height {
+  height: 40vh;
+}
+
+.days-font {
+  font-size: 30px;
+}
+
+.temperature-font {
+  font-size: 70px;
+  line-height: 1;
+}
+
+.cloud-font {
+  text-align: start;
+  font-size: 20px;
+}
+
+.nextDay-maiDiv {
+  padding: 10px 0;
+  height: 20vh;
+}
+
+.nextDay-day {
+  font-size: 20px;
+}
+
+.nextDay-temperature {
+  font-size: 25px;
+}
+
+.row {
+  --bs-gutter-x: 0rem !important
+}
+
+@media(max-width:992px) {
+  .rowHeight {
+    width: auto;
+    border-bottom: 0px !important;
+  }
+
+  .nextDays-weather .nextDay-maiDiv {
+    border-bottom: 3px solid white !important;
+    border-right: 3px solid white !important;
+  }
+
+  .nextDays-weather:nth-child(3) {
+    border-right: 0px !important;
+  }
+
+  .nextDays-weather:nth-child(5) {
+    border-right: 0px !important;
+  }
+}
+
+@media(max-width:767px) {
+  .pointer {
+    margin: 0px 10px !important;
+  }
+
+  .nextDays-weather .nextDay-maiDiv {
+    border-bottom: 5px solid white !important;
+    border-right: 0px solid white !important;
+  }
+}
+
+@media(max-width:567px) {
+  .mainDiv {
+    padding: 0% 20px !important;
+  }
+}
