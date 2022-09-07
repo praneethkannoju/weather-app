@@ -1,7 +1,8 @@
 import React from "react";
 import _ from "lodash";
+import moment from "moment";
 
-import Weather from "./component/WeatherCard";
+import WeatherCard from "./component/WeatherCard";
 import { Config } from "./Config";
 import data from "./json/data.json";
 class App extends React.Component {
@@ -23,24 +24,29 @@ class App extends React.Component {
     this.getWeatherData(this.state.city[index].lat, this.state.city[index].lon);
   };
 
-  getWeatherData = (lat, lon) => {
+  getWeatherData = async (lat, lon) => {
     const params = new URLSearchParams({
       lat,
       lon,
       appid: Config.API_KEY,
       units: "metric",
     });
-    fetch(`${Config.API_URL}/data/2.5/forecast?${params.toString()}`)
+    await fetch(`${Config.API_URL}/data/2.5/forecast?${params.toString()}`)
       .then((res) => {
         return res.json();
       })
       .then((result) => {
         let firstObjHour = null;
-        let newWeatherData = _.filter(result.list, function (o) {
-          let myDate = new Date(o.dt_txt);
-          let hours = myDate.getHours();
-          if (firstObjHour === null) firstObjHour = hours;
-          if (hours === firstObjHour) return o;
+        let newWeatherData = _.filter(result.list, function (data) {
+          // let myDate = new Date(data.dt_txt);
+          // let hours = myDate.getHours();
+          let hours = moment(data.dt_txt).hours();
+          if (firstObjHour === null) {
+            firstObjHour = hours;
+          }
+          if (hours === firstObjHour) {
+            return data;
+          }
         });
         this.setState({ weatherData: newWeatherData });
       });
@@ -48,8 +54,8 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="d-flex justify-content-center align-items-center flex-column mainDiv">
-        <div className="d-flex justify-content-center align-items-center my-3">
+      <div className="d-flex align-items-center flex-column mainDiv">
+        <div className="d-flex align-items-center my-3">
           {this.state.city.map((data, index) => {
             return (
               <h2
@@ -65,7 +71,7 @@ class App extends React.Component {
             );
           })}
         </div>
-        <Weather data={this.state.weatherData} />
+        <WeatherCard data={this.state.weatherData} />
       </div>
     );
   }
