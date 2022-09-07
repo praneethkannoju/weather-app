@@ -55,7 +55,7 @@ class WeatherCard extends React.Component {
                 <div className="d-flex flex-column justify-content-center align-items-center border-5 border-bottom border-white col-12-height">
                   <span className="text-capitalize days-font">Today</span>
                   <div className="d-flex mt-2  align-items-center">
-                    <WeatherIcon size={140} />
+                    <WeatherIcon size={140} color="#2e4269" />
                     <div className="d-flex mt-1  flex-column">
                       <span className="temperature-font">
                         {Math.round(item.main.temp)}°
@@ -86,7 +86,7 @@ class WeatherCard extends React.Component {
                   <span className="text-capitalize nextDay-day">
                     {days[myDate.getDay()]}
                   </span>
-                  <WeatherIcon size={60} />
+                  <WeatherIcon size={60} color="#2e4269" />
                   <span className="text-capitalize nextDay-temperature">
                     {Math.round(item.main.temp)}°
                   </span>
